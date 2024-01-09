@@ -1,7 +1,7 @@
 import os
 import time
 from colorama import init, Fore, Back, Style
-
+"""
 # Initialize colorama
 init(autoreset=True)
 
@@ -10,7 +10,7 @@ print(Fore.RED + 'This is red text')
 print(Back.GREEN + 'This has a green background')
 print(Style.BRIGHT + 'This is bright text')
 print(Fore.CYAN + Back.YELLOW + 'Cyan text on yellow background')
-
+"""
 def checkChoice(text):
     try:
         if int(text) < 0:
