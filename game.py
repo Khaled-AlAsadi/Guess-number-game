@@ -1,8 +1,9 @@
 from random import randint
+import time
 import validation
 import gspread
 from google.oauth2.service_account import Credentials
-from colorama import init, Fore, Back, Style
+from colorama import Fore, Back, Style
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -31,7 +32,8 @@ def rules():
         "Rule 1 : The player guess the number\n"
         "Rule 2 : On each level the max number for the guess increaases\n"
         "Rule 3 : On level completion the player gets 50 points\n"
-        "Rule 4 : The result gets saved to google spreadsheets on the player chooses not to continue"
+        "Rule 4: The result gets saved to google spreadsheets on the player"
+        "chooses not to keep playing by typing no on the question\n"
     )
     global choice
     choice = input("Return to menu by typing 0 and press enter\n")
@@ -40,7 +42,6 @@ def rules():
     elif int(choice) == 0:
         validation.clear_console()
         menu()
-
 
 def menu():
     """
@@ -83,7 +84,7 @@ def startGame(level, max_number):
         elif guess > random_number:
             print("Too high number")
             guess = int(input("Enter your guess again:\n "))
-    print("Congrats you guessed the number. The number is " + str(random_number))
+    print(Fore.GREEN + "Congrats you guessed the number. The number is " + str(random_number))
     score += 50
 
     if validation.check_input():

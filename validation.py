@@ -23,7 +23,7 @@ def check_input():
         elif answer == "no":
             return False
         else:
-            print("Invalid input. Please enter 'yes' or 'no'.")
+            print(Fore.RED + "Invalid input. Please enter 'yes' or 'no'.")
             time.sleep(0.1)
 def clear_console():
     if os.name == 'nt':
