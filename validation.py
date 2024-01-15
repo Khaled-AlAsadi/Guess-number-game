@@ -7,7 +7,7 @@ def checkChoice(text):
         if int(text) < 0:
             print(Fore.WHITE + Back.RED + "Please enter a positive number.")
             return False
-        elif int(text) > 2:
+        elif int(text) > 3:
             return False
         else:
             return True
