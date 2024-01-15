@@ -4,15 +4,28 @@ import validation
 import gspread
 from google.oauth2.service_account import Credentials
 from colorama import Fore, Back, Style
+import os
+from google.auth import exceptions
+from google.auth.transport.requests import Request
+from google.oauth2 import service_account
+import gspread
+import json
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive",
 ]
-CREDS = Credentials.from_service_account_file("GOOGLE_SHEETS_CREDS_JSON")
-SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+creds_json_str = os.environ.get("GOOGLE_SHEETS_CREDS_JSON")
+
+if creds_json_str is None:
+    raise exceptions.MissingFileError(
+        "GOOGLE_SHEETS_CREDS_JSON environment variable is not set."
+    )
+
+creds_dict = json.loads(creds_json_str)
+CREDS = service_account.Credentials.from_service_account_info(creds_dict, scopes=SCOPE)
+GSPREAD_CLIENT = gspread.authorize(CREDS)
 SHEET = GSPREAD_CLIENT.open("Guess-Number-Game")
 Blad1 = SHEET.worksheet("Blad1")
 
