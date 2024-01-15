@@ -4,28 +4,15 @@ import validation
 import gspread
 from google.oauth2.service_account import Credentials
 from colorama import Fore, Back, Style
-import os
-from google.auth import exceptions
-from google.auth.transport.requests import Request
-from google.oauth2 import service_account
-import gspread
-import json
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive",
 ]
-creds_json_str = os.environ.get("GOOGLE_SHEETS_CREDS_JSON")
-
-if creds_json_str is None:
-    raise exceptions.MissingFileError(
-        "GOOGLE_SHEETS_CREDS_JSON environment variable is not set."
-    )
-
-creds_dict = json.loads(creds_json_str)
-CREDS = service_account.Credentials.from_service_account_info(creds_dict, scopes=SCOPE)
-GSPREAD_CLIENT = gspread.authorize(CREDS)
+CREDS = Credentials.from_service_account_file("creds.json")
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("Guess-Number-Game")
 Blad1 = SHEET.worksheet("Blad1")
 
@@ -56,12 +43,11 @@ def rules():
         validation.clear_console()
         menu()
 
-
 def menu():
     """
     Main Menu function that runs first
     """
-    print(Style.BRIGHT + "1. Start Game\n" "2.Let pc guess the number\n" "3.Rules")
+    print(Style.BRIGHT + "1. Start Game\n" "2. Rules")
     choice = input(
         "Please choose an option from the menu and type the number of the choice and press enter\n"
     )
@@ -74,14 +60,8 @@ def menu():
     if int(choice) == 1:
         validation.clear_console()
         startGame(level, max_number)
-    if int(choice) == 3:
-        rules()
     if int(choice) == 2:
-        pcGame()
-
-
-def pcGame():
-    print("T")
+        rules()
 
 
 def startGame(level, max_number):
@@ -104,11 +84,7 @@ def startGame(level, max_number):
         elif guess > random_number:
             print("Too high number")
             guess = int(input("Enter your guess again:\n "))
-    print(
-        Fore.GREEN
-        + "Congrats you guessed the number. The number is "
-        + str(random_number)
-    )
+    print(Fore.GREEN + "Congrats you guessed the number. The number is " + str(random_number))
     score += 50
 
     if validation.check_input():
@@ -123,5 +99,5 @@ def startGame(level, max_number):
         validation.clear_console()
         menu()
 
-if __name__ == "__main__":
-    menu()
+
+menu()

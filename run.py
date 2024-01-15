@@ -1,7 +1,8 @@
-import game
+from game import menu
 
 def main():
-    print("T")
+    input("Hit enter to start the program...")
+    menu()
 
 if __name__ == "__main__":
-    print("S")
+    main()
