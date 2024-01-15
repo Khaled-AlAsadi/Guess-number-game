@@ -123,5 +123,5 @@ def startGame(level, max_number):
         validation.clear_console()
         menu()
 
-
-menu()
+if __name__ == "__main__":
+    menu()
