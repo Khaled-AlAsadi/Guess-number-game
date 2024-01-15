@@ -43,19 +43,20 @@ def rules():
         validation.clear_console()
         menu()
 
+
 def menu():
     """
     Main Menu function that runs first
     """
-    print(Style.BRIGHT + "1. Start Game\n" "2. Rules")
-    choice = input(
-        "Please choose an option from the menu and type the number of the choice and press enter\n"
-    )
+    print(Fore.WHITE + "1. Start Game\n" "2. Rules")
+    choice = input("Please choose an option from the menu and "
+                   "type the number of the choice and press enter\n"
+                   )
     while not validation.checkChoice(choice):
         choice = input(
-            Fore.WHITE
-            + Back.RED
-            + "Please choose a valid option from the menu and type the number of the choice\n"
+            Fore.RED
+            + "Please choose a valid option from "
+            "the menu and type the number of the choice\n"
         )
     if int(choice) == 1:
         validation.clear_console()
@@ -70,7 +71,8 @@ def startGame(level, max_number):
     """
     global score
     global name
-    name = input("Please type your name and press enter\n") if level == 1 else name
+    name = input(Fore.WHITE+"Please type your name "
+                 "and press enter\n")if level == 1 else name
     validation.clear_console()
     print("Level:", level)
     print("Score:", score)
@@ -84,7 +86,11 @@ def startGame(level, max_number):
         elif guess > random_number:
             print("Too high number")
             guess = int(input("Enter your guess again:\n "))
-    print(Fore.GREEN + "Congrats you guessed the number. The number is " + str(random_number))
+    print(
+        Fore.GREEN
+        + "Congrats you guessed the number. The number is "
+        + str(random_number)
+    )
     score += 50
 
     if validation.check_input():
