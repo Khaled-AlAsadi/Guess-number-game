@@ -1,8 +1,8 @@
-from game import *
+import game
 
 
 def main():
-    menu()
+    game.menu()
 
 
 if __name__ == "__main__":

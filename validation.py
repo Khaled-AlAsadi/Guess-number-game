@@ -1,6 +1,6 @@
 import os
 import time
-from colorama import init, Fore, Back, Style
+from colorama import Fore, Back, Style
 
 def checkChoice(text):
     try:
