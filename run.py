@@ -1,7 +1,8 @@
-
+import sys
 
 def main():
-    input("Hit enter to start the program...")
+    if sys.stdin.isatty():
+        input("Hit enter to start the program...")
 
 if __name__ == "__main__":
     main()
