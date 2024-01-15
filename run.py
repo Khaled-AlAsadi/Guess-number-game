@@ -1,7 +1,7 @@
 import game
 
 def main():
-    game.menu()
+    print("T")
 
 if __name__ == "__main__":
-    main()
+    print("S")
