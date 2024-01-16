@@ -1,8 +1,4 @@
-from game import test 
-
 def main():
-    input("Hit enter to start the program...")
-    test()
-
+    print("test")
 if __name__ == "__main__":
     main()
