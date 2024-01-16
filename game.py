@@ -57,6 +57,8 @@ def rules():
         validation.clear_console()
         menu()
 
+def test():
+    print("T")
 
 def menu():
     """
