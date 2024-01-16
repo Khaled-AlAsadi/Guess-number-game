@@ -17,16 +17,10 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive",
 ]
-creds_json_str = os.environ.get("GOOGLE_SHEETS_CREDS_JSON")
 
-if creds_json_str is None:
-    raise exceptions.MissingFileError(
-        "GOOGLE_SHEETS_CREDS_JSON environment variable is not set."
-    )
-
-creds_dict = json.loads(creds_json_str)
-CREDS = service_account.Credentials.from_service_account_info(creds_dict, scopes=SCOPE)
-GSPREAD_CLIENT = gspread.authorize(CREDS)
+CREDS = Credentials.from_service_account_file("creds.json")
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("Guess-Number-Game")
 Blad1 = SHEET.worksheet("Blad1")
 
@@ -58,22 +52,23 @@ def rules():
         menu()
 
 
-def test():
-    print("T")
-
-
 def menu():
     """
     Main Menu function that runs first
     """
     print(Fore.WHITE + "1. Start Game\n" "2. Rules")
     choice = input(
-        "Please choose an option from the menu and type the number of the choice and press enter\n"
+        f"""
+    Please choose an option from the menu and type
+    the number of the choice and press enter\n
+                   """
     )
     while not validation.checkChoice(choice):
         choice = input(
-            Fore.RED + "Please choose a valid option from "
-            "the menu and type the number of the choice\n"
+            Fore.RED
+            + f"""Please choose a valid option from
+            the menu and type the number of the choice\n
+            """
         )
     if int(choice) == 1:
         validation.clear_console()
@@ -89,7 +84,7 @@ def startGame(level, max_number):
     global score
     global name
     name = (
-        input(Fore.WHITE + "Please type your name " "and press enter\n")
+        input(Fore.WHITE + f"Please type your name and press enter\n")
         if level == 1
         else name
     )
