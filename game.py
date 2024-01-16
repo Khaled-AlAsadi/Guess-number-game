@@ -57,21 +57,22 @@ def rules():
         validation.clear_console()
         menu()
 
+
 def test():
     print("T")
+
 
 def menu():
     """
     Main Menu function that runs first
     """
     print(Fore.WHITE + "1. Start Game\n" "2. Rules")
-    choice = input("Please choose an option from the menu and "
-                   "type the number of the choice and press enter\n"
-                   )
+    choice = input(
+        "Please choose an option from the menu and type the number of the choice and press enter\n"
+    )
     while not validation.checkChoice(choice):
         choice = input(
-            Fore.RED
-            + "Please choose a valid option from "
+            Fore.RED + "Please choose a valid option from "
             "the menu and type the number of the choice\n"
         )
     if int(choice) == 1:
@@ -87,8 +88,11 @@ def startGame(level, max_number):
     """
     global score
     global name
-    name = input(Fore.WHITE+"Please type your name "
-                 "and press enter\n")if level == 1 else name
+    name = (
+        input(Fore.WHITE + "Please type your name " "and press enter\n")
+        if level == 1
+        else name
+    )
     validation.clear_console()
     print("Level:", level)
     print("Score:", score)
