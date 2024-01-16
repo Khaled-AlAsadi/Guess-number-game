@@ -17,7 +17,7 @@ def checkChoice(text):
 
 def check_input():
     while True:
-        answer = input("Do you want to proceed to the next level? (yes/no): ").lower()
+        answer = input("Do you want to proceed to the next level? (yes/no): \n").lower()
         if answer == "yes":
             return True
         elif answer == "no":
