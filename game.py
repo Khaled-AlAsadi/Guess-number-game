@@ -43,7 +43,6 @@ def rules():
         "Rule 4: The result gets saved to google spreadsheets on the player"
         "chooses not to keep playing by typing no on the question\n"
     )
-    global choice
     choice = input("Return to menu by typing 0 and press enter\n")
     if not validation.checkChoice(choice):
         print("please enter a valid choice")
@@ -82,7 +81,6 @@ def startGame(level, max_number):
     Function that handles the game logic
     """
     global score
-    global name
     name = (
         input(Fore.WHITE + f"Please type your name and press enter\n")
         if level == 1
