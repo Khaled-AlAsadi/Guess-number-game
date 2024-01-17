@@ -81,11 +81,19 @@ def startGame(level, max_number):
     Function that handles the game logic
     """
     global score
+    global name
     name = (
         input(Fore.WHITE + f"Please type your name and press enter\n")
         if level == 1
         else name
     )
+
+    while validation.check_name(name):
+        name = (
+            input(Fore.WHITE + "Please type your name and press enter\n")
+            if level == 1
+            else name
+        )
     validation.clear_console()
     print("Level:", level)
     print("Score:", score)

@@ -25,6 +25,12 @@ def check_input():
         else:
             print(Fore.RED + "Invalid input. Please enter 'yes' or 'no'.")
             time.sleep(0.1)
+def check_name(name):
+    if len(name.strip()) == 0:
+        print(Fore.RED + "Please enter a valid name")
+        return True
+    else:
+        return False
 def clear_console():
     if os.name == 'nt':
         os.system('cls')
