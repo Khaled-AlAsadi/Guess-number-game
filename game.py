@@ -71,12 +71,12 @@ def menu():
         )
     if int(choice) == 1:
         validation.clear_console()
-        startGame(level, max_number)
+        start_game(level, max_number)
     if int(choice) == 2:
         rules()
 
 
-def startGame(level, max_number):
+def start_game(level, max_number):
     """
     Function that handles the game logic
     """
@@ -118,7 +118,7 @@ def startGame(level, max_number):
         max_number += 5
         print(max_number)
         level += 1
-        startGame(level, max_number)
+        start_game(level, max_number)
         print(max_number)
     else:
         NEW_DATA = [name, level, score]
