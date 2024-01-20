@@ -19,8 +19,10 @@ def check_input():
     while True:
         answer = input("Do you want to proceed to the next level? (yes/no): \n").lower()
         if answer == "yes":
+            print(Style.RESET_ALL)
             return True
         elif answer == "no":
+            print(Style.RESET_ALL)
             return False
         else:
             print(Fore.RED + "Invalid input. Please enter 'yes' or 'no'.")

@@ -116,6 +116,7 @@ def start_game(level, max_number):
         score += 50
 
     if validation.check_input():
+        print(Style.RESET_ALL)
         max_number += 5
         print(max_number)
         level += 1
