@@ -78,7 +78,7 @@ def menu():
 
 def start_game(level, max_number):
     """
-    Function that handles the game logic
+    Function that handles the game logic and saving to spreadsheet
     """
     global score
     global name
@@ -112,7 +112,8 @@ def start_game(level, max_number):
         + "Congrats you guessed the number. The number is "
         + str(random_number)
     )
-    score += 50
+    if random_number == guess:
+        score += 50
 
     if validation.check_input():
         max_number += 5
@@ -123,6 +124,17 @@ def start_game(level, max_number):
     else:
         NEW_DATA = [name, level, score]
         Blad1.append_row(NEW_DATA)
+        data_range = Blad1.get_all_values()
+        header = data_range[0]
+        data = data_range[1:]
+        data.sort(key=lambda x: int(x[2]), reverse=True)
+        top_10_data = data[:10]
+        Blad1.clear()
+        Blad1.append_row(header)
+        for row, index in enumerate(top_10_data):
+            Blad1.append_row(index)
+            if row == 9:
+                return
         validation.clear_console()
         menu()
 
