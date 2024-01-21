@@ -38,11 +38,13 @@ def rules():
     """
     validation.clear_console()
     print(
-        "Rule 1 : The player guess the number\n"
-        "Rule 2 : On each level the max number for the guess increaases\n"
-        "Rule 3 : On level completion the player gets 50 points\n"
-        "Rule 4: The result gets saved to google spreadsheets on the player"
-        "chooses not to keep playing by typing no on the question\n"
+        f"""
+        Rule 1 : The player guess the number\n
+        Rule 2 : On each level the max number increaases\n
+        Rule 3 : On level completion the player gets 50 points\n
+        Rule 5: Each wrong guess costs 20 credits\n
+        Rule 6: if the player is out of credits the player loses
+        """
     )
     choice = input("Return to menu by typing 0 and press enter\n")
     if not validation.checkChoice(choice):
@@ -115,8 +117,8 @@ def start_game(level, max_number):
             guess = int(input("Enter your guess again:\n "))
     if credits == 0:
         print(Fore.RED +
-              f"Unfortunately, you are out of credits"
-              + Style.RESET_ALL)
+              f"Unfortunately, you are out of credits" +
+              Style.RESET_ALL)
         input("Press Enter to return to menu.")
         validation.clear_console()
         menu()
