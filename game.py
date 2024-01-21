@@ -29,6 +29,7 @@ level = 1
 max_number = 10
 name = ""
 score = 0
+credits = 100
 
 
 def rules():
@@ -68,6 +69,7 @@ def menu():
             + f"""Please choose a valid option from
             the menu and type the number of the choice\n
             """
+            + Style.RESET_ALL
         )
     if int(choice) == 1:
         validation.clear_console()
@@ -82,6 +84,7 @@ def start_game(level, max_number):
     """
     global score
     global name
+    global credits
     name = (
         input(Fore.WHITE + f"Please type your name and press enter\n")
         if level == 1
@@ -97,20 +100,31 @@ def start_game(level, max_number):
     validation.clear_console()
     print("Level:", level)
     print("Score:", score)
+    print("Credits:", credits)
     random_number = randint(1, max_number)
     print("Guess a number between 1 and " + str(max_number))
     guess = int(input("Enter your guess:\n "))
-    while random_number != guess:
-        if guess < random_number:
+    while random_number != guess and credits > 0:
+        if guess < random_number and credits != 0:
             print("low number")
+            credits -= 20
             guess = int(input("Enter your guess again:\n "))
-        elif guess > random_number:
+        elif guess > random_number and credits != 0:
             print("Too high number")
+            credits -= 20
             guess = int(input("Enter your guess again:\n "))
+    if credits == 0:
+        print(Fore.RED +
+              f"Unfortunately, you are out of credits"
+              + Style.RESET_ALL)
+        input("Press Enter to return to menu.")
+        validation.clear_console()
+        menu()
     print(
         Fore.GREEN
         + "Congrats you guessed the number. The number is "
         + str(random_number)
+        + Style.RESET_ALL
     )
     if random_number == guess:
         score += 50
@@ -120,10 +134,12 @@ def start_game(level, max_number):
         max_number += 5
         print(max_number)
         level += 1
+        credits += 100
         start_game(level, max_number)
         print(max_number)
     else:
-        NEW_DATA = [name, level, score]
+        credits += 100
+        NEW_DATA = [name, level, score, credits]
         Blad1.append_row(NEW_DATA)
         data_range = Blad1.get_all_values()
         header = data_range[0]
