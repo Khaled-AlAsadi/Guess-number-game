@@ -1,16 +1,10 @@
-from asyncio import exceptions
 import os
-from google.auth import exceptions
-from google.auth.transport.requests import Request
-from google.oauth2 import service_account
 import gspread
-import json
 from random import randint
-import time
 import validation
 import gspread
 from google.oauth2.service_account import Credentials
-from colorama import Fore, Back, Style
+from colorama import Fore, Style
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
