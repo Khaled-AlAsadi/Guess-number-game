@@ -53,3 +53,87 @@ Users can quickly learn the rules of the game and play the game. Once the player
   Below the rules, the user can find the main menu where he or she may choose to return to main menu.
 
   ![Rules](documentation/features/rules.png)
+
+  - **When the user chose to play the game**
+  The program asks for the player name.
+  The user start with 100 creadits.Every wrong guess takes 20 credits. When the user reaches zero credits the player looses.
+  On each level completion the player gets 50 points.
+
+  ![Game](documentation/features/game.png)
+
+---
+
+## Flowchart
+
+The flowchart represents the logic of the application:
+
+  ![GuessStreak Flow Chart](documentation/flowchart.png)
+
+
+---
+
+
+## Technologies Used
+
+### Languages:
+
+- [Python 3.8.5](https://www.python.org/downloads/release/python-385/): used to anchor the project and direct all application behavior
+
+- [JavaScript](https://www.javascript.com/): used to provide the start script needed to run the Code Institute mock terminal in the browser
+
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) used to construct the elements involved in building the mock terminal in the browser
+
+### Frameworks/Libraries, Programmes and Tools:
+#### Python modules/packages:
+
+##### Standard library imports:
+
+- [random](https://docs.python.org/3/library/random.html) was used to implement pseudo-random number generation.
+- [os](https://docs.python.org/3/library/os.html ) was used to clear the terminal.
+##### Third-party imports:
+
+- [google.oauth2](https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow) was used for authentication.
+- [colorama](https://pypi.org/project/colorama/) was used to add color to the terminal.
+- [gspread](https://docs.gspread.org/en/v5.12.1/) was used to interact with Google Sheets
+
+#### Other tools:
+
+- [VSCode](https://code.visualstudio.com/) was used as the main tool to write and edit code.
+- [Git](https://git-scm.com/) was used for the version control of the website.
+- [GitHub](https://github.com/) was used to host the code of the website.
+- [GIMP](https://www.gimp.org/) was used to make and resize images for the README file.
+- [Miro](https://miro.com/) was used to make a flowchart for the README file.
+- [render.com](https://render.com/) was used to deploy the project.
+
+---
+
+## Bugs
+
++ **Solved bugs**
+
++ **Unsolved bugs**
+
+---
+## Testing
+
+Please refer to the [TESTING.md](TESTING.md) file for all test related documentation.
+
+---
+## Deployment
+
+### To deploy the project to Render so it can be run as a remote web application:
+
+
+---
+## Credits
+
+- Color formatting: [Colorama](https://pypi.org/project/colorama/).
+
+---
+## Acknowledgements
+
+[Iuliia Konovalova](https://github.com/IuliiaKonovalova)
+I am thankful to my mentor Iuliia Konovalova for her guidance and valuable feedback!
+
+[codeinstitute](https://codeinstitute.net/se/)
+I am thank to Code Institue for providing the template for the project to use!
