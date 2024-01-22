@@ -110,7 +110,7 @@ The flowchart represents the logic of the application:
 ## Bugs
 
 + **Solved bugs**
-
+1. On saving the results to the sheet it used to save 11 rows even though the max was 10. I had to add a for loop and stop it when it reaches 10 rows
 + **Unsolved bugs**
 
 ---
