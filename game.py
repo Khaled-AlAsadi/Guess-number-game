@@ -101,21 +101,36 @@ def start_game(level, max_number):
     print("Guess a number between 1 and " + str(max_number))
     guess = int(input("Enter your guess:\n "))
     while random_number != guess and credits > 0:
-        if guess < random_number and credits != 0:
+        if guess < random_number:
             print("low number")
             credits -= 20
-            guess = int(input("Enter your guess again:\n "))
-        elif guess > random_number and credits != 0:
+            guess = (
+                int(input("Enter your guess again:\n "))
+                if int(credits) > 0
+                else print(
+                    Fore.RED
+                    + f"Unfortunately, you are out of credits"
+                    + Style.RESET_ALL
+                )
+            )
+            input("Press Enter to return to menu.") if credits == 0 else None
+            validation.clear_console() if credits == 0 else None
+            menu() if credits == 0 else None
+        elif guess > random_number:
             print("Too high number")
             credits -= 20
-            guess = int(input("Enter your guess again:\n "))
-    if credits == 0:
-        print(Fore.RED +
-              f"Unfortunately, you are out of credits" +
-              Style.RESET_ALL)
-        input("Press Enter to return to menu.")
-        validation.clear_console()
-        menu()
+            guess = (
+                int(input("Enter your guess again:\n "))
+                if int(credits) > 0
+                else print(
+                    Fore.RED
+                    + f"Unfortunately, you are out of credits"
+                    + Style.RESET_ALL
+                )
+            )
+            input("Press Enter to return to menu.") if credits == 0 else None
+            validation.clear_console() if credits == 0 else None
+            menu() if credits == 0 else None
     print(
         Fore.GREEN
         + "Congrats you guessed the number. The number is "
