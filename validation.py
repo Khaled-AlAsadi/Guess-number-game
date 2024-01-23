@@ -13,7 +13,7 @@ def checkChoice(text):
                 + Style.RESET_ALL
             )
             return False
-        elif int(text) > 2:
+        elif int(text) > 3:
             return False
         else:
             return True
@@ -21,6 +21,15 @@ def checkChoice(text):
         print(Fore.RED + "Please enter a valid number." + Style.RESET_ALL)
         return False
 
+def checkRulesChoice(text):
+    try:
+        num = int(text)
+        if num == 0:
+            return True
+        else:
+            return False
+    except ValueError:
+        return False
 
 def check_input():
     while True:

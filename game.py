@@ -1,4 +1,5 @@
 import os
+import time
 import gspread
 from random import randint
 import validation
@@ -40,19 +41,26 @@ def rules():
         Rule 6: if the player is out of credits the player loses
         """
     )
-    choice = input("Return to menu by typing 0 and press enter\n")
-    if not validation.checkChoice(choice):
-        print("please enter a valid choice")
-    elif int(choice) == 0:
-        validation.clear_console()
-        menu()
+    while True:
+        choice = input("Return to menu by typing 0 and press enter\n")
+
+        if validation.checkRulesChoice(choice):
+            validation.clear_console()
+            menu()
+            break
+        else:
+            print(
+                Fore.RED
+                + "Please enter a valid choice"
+                + Style.RESET_ALL
+            )
 
 
 def menu():
     """
     Main Menu function that runs first
     """
-    print(Fore.WHITE + "1. Start Game\n" "2. Rules")
+    print(Fore.WHITE + "1. Start Game\n" "2. Rules\n" "3. Leaderboard")
     choice = input(
         f"""
     Please choose an option from the menu and type
@@ -72,6 +80,14 @@ def menu():
         start_game(level, max_number)
     if int(choice) == 2:
         rules()
+    if int(choice) == 3:
+        results()
+
+
+def results():
+    data_range = Blad1.get_all_values()
+    print("If you don't see your score then you did not get a high enogh score")
+    print(data_range)
 
 
 def start_game(level, max_number):
@@ -150,6 +166,7 @@ def start_game(level, max_number):
         print(max_number)
     else:
         credits += 100
+        print("processing...")
         NEW_DATA = [name, level, score, credits]
         Blad1.append_row(NEW_DATA)
         data_range = Blad1.get_all_values()
@@ -159,10 +176,16 @@ def start_game(level, max_number):
         top_10_data = data[:10]
         Blad1.clear()
         Blad1.append_row(header)
+        print("Saving results...")
         for row, index in enumerate(top_10_data):
             Blad1.append_row(index)
             if row == 9:
+                print("Results are saved...")
+                time.sleep(1.0)
+                validation.clear_console()
                 return
+        print("Results are saved...")
+        time.sleep(5.0)
         validation.clear_console()
         menu()
 
