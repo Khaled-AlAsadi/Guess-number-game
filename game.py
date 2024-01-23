@@ -2,6 +2,7 @@ import os
 import time
 import gspread
 from random import randint
+from tabulate import tabulate
 import validation
 import gspread
 from google.oauth2.service_account import Credentials
@@ -85,9 +86,25 @@ def menu():
 
 
 def results():
+    validation.clear_console()
     data_range = Blad1.get_all_values()
     print("If you don't see your score then you did not get a high enogh score")
-    print(data_range)
+    headers = data_range[0]
+    data = data_range[1:]
+    table = tabulate(data, headers=headers,tablefmt='fancy_grid')
+    print(table)
+    while True:
+        choice = input("Return to menu by typing 0 and press enter\n")
+        if validation.checkRulesChoice(choice):
+            validation.clear_console()
+            menu()
+            break
+        else:
+            print(
+                Fore.RED
+                + "Please enter a valid choice"
+                + Style.RESET_ALL
+            )
 
 
 def start_game(level, max_number):
