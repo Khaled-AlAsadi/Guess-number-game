@@ -2,6 +2,9 @@ from game import menu
 
 
 def main():
+    """
+    Main program function
+    """
     menu()
 
 
