@@ -1,4 +1,5 @@
 import os
+import re
 import time
 from colorama import Fore, Back, Style
 
@@ -21,6 +22,7 @@ def checkChoice(text):
         print(Fore.RED + "Please enter a valid number." + Style.RESET_ALL)
         return False
 
+
 def checkRulesChoice(text):
     try:
         num = int(text)
@@ -30,6 +32,7 @@ def checkRulesChoice(text):
             return False
     except ValueError:
         return False
+
 
 def check_input():
     while True:
@@ -50,6 +53,11 @@ def check_input():
 def check_name(name):
     if len(name.strip()) == 0:
         print(Fore.RED + "Please enter a valid name" + Style.RESET_ALL)
+        return True
+    elif not re.match("^[a-zA-Z0-9 ]+$", name):
+        print(Fore.RED +
+              "Name should contain only letters, numbers, and spaces" +
+              Style.RESET_ALL)
         return True
     else:
         return False
