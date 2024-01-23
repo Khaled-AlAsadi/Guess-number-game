@@ -50,11 +50,7 @@ def rules():
             menu()
             break
         else:
-            print(
-                Fore.RED
-                + "Please enter a valid choice"
-                + Style.RESET_ALL
-            )
+            print(Fore.RED + "Please enter a valid choice" + Style.RESET_ALL)
 
 
 def menu():
@@ -62,17 +58,21 @@ def menu():
     Main Menu function that runs first
     """
     print(Fore.WHITE + "1. Start Game\n" "2. Rules\n" "3. Leaderboard")
-    choice = input(
-        f"""
-    Please choose an option from the menu and type
-    the number of the choice and press enter\n
+    choice = input(Style.NORMAL +
                    """
-    )
+Please choose an option from the menu and type
+the number of the choice and press enter\n
+                   """
+                   )
     while not validation.checkChoice(choice):
         choice = input(
-            Fore.RED
-            + f"""Please choose a valid option from
-            the menu and type the number of the choice\n
+            Fore.RED +
+            """
+Please choose a valid option from the menu and type
+the number of the choice\n
+1. Start Game
+2. Rules
+3. Leaderboard
             """
             + Style.RESET_ALL
         )
@@ -86,12 +86,17 @@ def menu():
 
 
 def results():
+    """
+    Function that shows the leaderboard
+    """
     validation.clear_console()
     data_range = Blad1.get_all_values()
-    print("If you don't see your score then you did not get a high enogh score")
+    print(Style.NORMAL +
+          "If you don't see your score then you did not get a high enogh score"
+          )
     headers = data_range[0]
     data = data_range[1:]
-    table = tabulate(data, headers=headers,tablefmt='fancy_grid')
+    table = tabulate(data, headers=headers, tablefmt="fancy_grid")
     print(table)
     while True:
         choice = input("Return to menu by typing 0 and press enter\n")
@@ -100,11 +105,7 @@ def results():
             menu()
             break
         else:
-            print(
-                Fore.RED
-                + "Please enter a valid choice"
-                + Style.RESET_ALL
-            )
+            print(Fore.RED + "Please enter a valid choice" + Style.RESET_ALL)
 
 
 def start_game(level, max_number):
