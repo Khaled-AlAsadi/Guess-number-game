@@ -14,18 +14,12 @@ No errors were found:
 
 - **game.py**
 
-![Python Validator](documentation/pep8_validator/validator_game_file.png)
-
 ![Python Validator](documentation/pep8_validator/validator_game_file2.png)
 
 - **validation.py**
 
-![Python Validator](documentation/pep8_validator/validator_validation_file.png)
-
 ![Python Validator](documentation/pep8_validator/validator_validation_file2.png)
 
 - **run.py**
-
-![Python Validator](documentation/pep8_validator/validator_run_file.png)
 
 ![Python Validator](documentation/pep8_validator/validator_run_file2.png)
