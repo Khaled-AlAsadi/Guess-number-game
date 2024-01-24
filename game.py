@@ -137,7 +137,7 @@ def start_game(level, max_number):
     print("Guess a number between 1 and " + str(max_number))
     guess = input("Enter your guess:\n ")
     while random_number != guess and credits > 0:
-        if not guess.isdigit():
+        if not str(guess).isdigit():
             print(f"Please enter a valid number between 1 and {max_number}.")
             guess = input("Enter your guess:\n ")
         elif int(guess) > max_number:
