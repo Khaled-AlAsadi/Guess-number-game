@@ -22,7 +22,7 @@ Blad1 = SHEET.worksheet("Blad1")
 
 choice = ""
 level = 1
-max_number = 10
+max_number = 100
 name = ""
 score = 0
 credits = 100
@@ -35,11 +35,11 @@ def rules():
     validation.clear_console()
     print(
         f"""
-        Rule 1 : The player guess the number\n
-        Rule 2 : On each level the max number increaases\n
-        Rule 3 : On level completion the player gets 50 points\n
-        Rule 5: Each wrong guess costs 20 credits\n
-        Rule 6: if the player is out of credits the player loses
+Rule 1 : The player guess the number\n
+Rule 2 : On each level the max number increaases\n
+Rule 3 : On level completion the player gets 50 points\n
+Rule 5: Each wrong guess costs 20 credits\n
+Rule 6: if the player is out of credits the player loses
         """
     )
     while True:
@@ -133,9 +133,15 @@ def start_game(level, max_number):
     print("Credits:", credits)
     random_number = randint(1, max_number)
     print("Guess a number between 1 and " + str(max_number))
-    guess = int(input("Enter your guess:\n "))
+    guess = input("Enter your guess:\n ")
     while random_number != guess and credits > 0:
-        if guess < random_number:
+        if not guess.isdigit():
+            print(f"Please enter a valid number between 1 and {max_number}.")
+            guess = input("Enter your guess:\n ")
+        elif int(guess) > max_number:
+            print(f"Please enter a valid number between 1 and {max_number}.")
+            guess = input("Enter your guess:\n ")
+        elif int(guess) < random_number:
             print("low number")
             credits -= 20
             guess = (
@@ -150,7 +156,7 @@ def start_game(level, max_number):
             input("Press Enter to return to menu.") if credits == 0 else None
             validation.clear_console() if credits == 0 else None
             menu() if credits == 0 else None
-        elif guess > random_number:
+        elif int(guess) > random_number:
             print("Too high number")
             credits -= 20
             guess = (
