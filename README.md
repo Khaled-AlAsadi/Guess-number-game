@@ -116,11 +116,15 @@ The flowchart represents the logic of the application:
 
 + **Solved bugs**
 1. On saving the results to the sheet it used to save 11 rows even though the max was 10. I had to add a for loop and stop it when it reaches 10 rows
-  `
+  ```
     for row, index in enumerate(top_10_data):
         Blad1.append_row(index)
         if row == 9:
-  `
+            print("Results are saved...")
+            time.sleep(1.0)
+            validation.clear_console()
+            return
+  ```
   
 2. The input validation on some part of the application were bad and sometimes it crashed the app.
 + **Unsolved bugs**
