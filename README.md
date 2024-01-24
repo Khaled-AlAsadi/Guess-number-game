@@ -196,10 +196,10 @@ Link to the deployed application on Render: [The Maddest Madlib](https://the-mad
 ## Credits
 
 - Color formatting: [Colorama](https://pypi.org/project/colorama/).
-- Miro: [Miro](https://miro.com).
-- Github:[Github](https://github.com)
-- Render: [Render](https://render.com/)
-- Google: [Google](https://render.com/)
+- [Miro](https://miro.com) for creating the flowchart.
+- [Github](https://github.com) for storing the code.
+- [Render](https://render.com/) for hosting the application.
+- [Google](https://google.com/) for storing the results in a spreadsheet.
 
 ---
 ## Acknowledgements
