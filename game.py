@@ -58,16 +58,17 @@ def menu():
     Main Menu function that runs first
     """
     print(Fore.WHITE + "1. Start Game\n" "2. Rules\n" "3. Leaderboard")
-    choice = input(Style.NORMAL +
-                   """
+    choice = input(
+        Style.NORMAL
+        + """
 Please choose an option from the menu and type
 the number of the choice and press enter\n
                    """
-                   )
+    )
     while not validation.checkChoice(choice):
         choice = input(
-            Fore.RED +
-            """
+            Fore.RED
+            + """
 Please choose a valid option from the menu and type
 the number of the choice\n
 1. Start Game
@@ -91,9 +92,10 @@ def results():
     """
     validation.clear_console()
     data_range = Blad1.get_all_values()
-    print(Style.NORMAL +
-          "If you don't see your score then you did not get a high enogh score"
-          )
+    print(
+        Style.NORMAL
+        + "If you don't see your score then you did not get a high enogh score"
+    )
     headers = data_range[0]
     data = data_range[1:]
     table = tabulate(data, headers=headers, tablefmt="fancy_grid")
@@ -209,7 +211,7 @@ def start_game(level, max_number):
                 validation.clear_console()
                 return
         print("Results are saved...")
-        time.sleep(5.0)
+        time.sleep(1.0)
         validation.clear_console()
         menu()
 
