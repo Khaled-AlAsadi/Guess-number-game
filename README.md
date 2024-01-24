@@ -61,6 +61,11 @@ Users can quickly learn the rules of the game and play the game. Once the player
 
   ![Game](documentation/features/game.png)
 
+  - **When the user chose to see the leaderboard**
+  The results is shown in a table that looks nice .
+
+  ![Leaderboard](documentation/features/leaderboard.png)
+
 ---
 
 ## Flowchart
@@ -111,6 +116,13 @@ The flowchart represents the logic of the application:
 
 + **Solved bugs**
 1. On saving the results to the sheet it used to save 11 rows even though the max was 10. I had to add a for loop and stop it when it reaches 10 rows
+  `
+    for row, index in enumerate(top_10_data):
+        Blad1.append_row(index)
+        if row == 9:
+  `
+  
+2. The input validation on some part of the application were bad and sometimes it crashed the app.
 + **Unsolved bugs**
 
 ---
@@ -128,6 +140,10 @@ Please refer to the [TESTING.md](TESTING.md) file for all test related documenta
 ## Credits
 
 - Color formatting: [Colorama](https://pypi.org/project/colorama/).
+- Miro: [Miro](https://miro.com).
+- Github:[Github](https://github.com)
+- Render: [Render](https://render.com/)
+- Google: [Google](https://render.com/)
 
 ---
 ## Acknowledgements
