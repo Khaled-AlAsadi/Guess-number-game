@@ -38,8 +38,8 @@ def rules():
 Rule 1 : The player guess the number\n
 Rule 2 : On each level the max number increaases\n
 Rule 3 : On level completion the player gets 50 points\n
-Rule 5: Each wrong guess costs 20 credits\n
-Rule 6: if the player is out of credits the player loses
+Rule 4: Each wrong guess costs 20 credits\n
+Rule 5: if the player is out of credits the player loses
         """
     )
     while True:
