@@ -126,9 +126,11 @@ The flowchart represents the logic of the application:
             return
   ```
   
-2. The input validation on some part of the application were bad and sometimes it crashed the app.
+2. The input validation on some parts of the application were bad and sometimes it crashed the app.
+
 + **Unsolved bugs**
 
+    None
 ---
 ## Testing
 
